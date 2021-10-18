@@ -1,0 +1,47 @@
+{
+  "name": "time",
+  "version": "1.0.0",
+  "private": true,
+  "main": "main/index.js",
+  "scripts": {
+    "dev:electron": "wait-on http://localhost:1234/ && cross-env HOST=http://localhost:1234/ nodemon --exec 'electron .' --watch main",
+    "dev:parcel": "parcel serve app/index.html --dist-dir app/dist",
+    "dev": "concurrently npm:dev:*",
+    "build:parcel": "parcel build app/index.html --dist-dir app/dist --public-url ./",
+    "build": "concurrently npm:build:*",
+    "bundle": "npm run build && electron-builder build",
+    "publish": "npm run build && electron-builder --publish onTagOrDraft",
+    "lint:frontend": "eslint app --ext .jsx,.tsx,.ts,.js",
+    "lint": "concurrently npm:lint:*"
+  },
+  "license": "GPL-3.0-or-later",
+  "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^4.0.3",
+    "@types/react": "^17.0.30",
+    "@types/react-dom": "^17.0.9",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
+    "concurrently": "^6.3.0",
+    "cross-env": "^7.0.3",
+    "electron": "^15.1.2",
+    "electron-builder": "^22.13.1",
+    "eslint": "^7.32.0",
+    "eslint-plugin-react": "^7.26.1",
+    "nodemon": "^2.0.13",
+    "parcel": "^2.0.0",
+    "wait-on": "^6.0.0"
+  },
+  "dependencies": {
+    "moment": "^2.29.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-icons": "^4.3.1"
+  },
+  "@parcel/transformer-js": {
+    "inlineFS": false,
+    "inlineEnvironment": false
+  },
+  "targets": {
+    "main": false
+  }
+}

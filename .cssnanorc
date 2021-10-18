@@ -1,0 +1,20 @@
+{
+  "plugins": [
+    [
+      "cssnano",
+      {
+        "preset": "default"
+      }
+    ],
+    [
+      "@fullhuman/postcss-purgecss",
+      {
+        "content": [
+          "app/**/*.jsx",
+          "app/**/*.tsx",
+          "app/*.html"
+        ]
+      }
+    ]
+  ]
+}
