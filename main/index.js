@@ -1,10 +1,16 @@
 const electron = require("electron");
 const path = require("path");
+const electronStore = require("electron-store");
 
 const { app, ipcMain, nativeTheme, BrowserWindow } = electron;
 
 /** @type {undefined| electron.BrowserWindow} */
 let mainWindow;
+
+const themeStore = new electronStore({
+  name: "Theme",
+  schema: { currentTheme: { type: "string", default: "system" } },
+});
 
 const createMainWindow = () => {
   mainWindow = new BrowserWindow({
@@ -29,6 +35,7 @@ const createMainWindow = () => {
 };
 
 app.on("ready", () => {
+  nativeTheme.themeSource = themeStore.get("currentTheme") || "system";
   createMainWindow();
 });
 
@@ -53,11 +60,14 @@ ipcMain.on("closeWindow", () => {
 });
 
 ipcMain.on("darkModeToggle", () => {
-  nativeTheme.themeSource = nativeTheme.shouldUseDarkColors ? "light" : "dark";
+  const newTheme = nativeTheme.shouldUseDarkColors ? "light" : "dark";
+  nativeTheme.themeSource = newTheme;
+  themeStore.set("currentTheme", newTheme);
 });
 
 ipcMain.on("darkModeReset", () => {
   nativeTheme.themeSource = "system";
+  themeStore.set("currentTheme", "system");
 });
 
 ipcMain.on("minimizeWindow", () => {

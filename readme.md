@@ -16,7 +16,6 @@ Currently only supporting Windows
 
 - [ ] MacOS support
 - [ ] Spectron tests (Spectron doesn't support Electron 15 yet)
-- [ ] Persist Dark-/lightmode
 
 ## Development
 
