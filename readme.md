@@ -1,21 +1,22 @@
 # Time.
 
+A minimalistic App to display the current Time.
+Currently only supporting Windows
+
 ## Screenshot
 
 <div align="center">
-  <img src="./screenshots/main.png">
+  <img src="./screenshots/main.png" width="300px" max-width="100%">
 </div>
 
-## Description
-
-Minimalistic App to display the current Time.
-Currently only supporting Windows
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/markxoe/time-app/Bundle%20and%20publish?style=flat-square)
+![GitHub](https://img.shields.io/github/license/markxoe/time-app?style=flat-square)
 
 ## Todo
 
 - [ ] MacOS support
 - [ ] Spectron tests (Spectron doesn't support Electron 15 yet)
-- [ ] Persist Dark-/lightmdoe
+- [ ] Persist Dark-/lightmode
 
 ## Development
 
